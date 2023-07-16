@@ -18,14 +18,22 @@ export const Widget = ({ ...props }) => {
         loop
         muted
         url="https://cams.cdn-surfline.com/cdn-ec/cr-backyardshermosa/chunklist.m3u8"
+        onReady={(player) => {
+          const e = player.getInternalPlayer()
+          console.log("onReady", e)
+          e.setAttribute("crossOrigin", "anonymous")
+          e.setAttribute("muted", true)
+        }}
         config={{
           file: {
             attributes: {
-              crossorigin: "anonymous",
+              crossOrigin: "anonymous",
+              muted: true,
             },
           },
         }}
       />
+
 
       <audio controls loop autoPlay hidden>
         <source src={audioUrl} type="audio/mpeg" />
