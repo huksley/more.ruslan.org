@@ -29,16 +29,6 @@ const TimeDisplay = () => {
 
 export const Widget = ({ ...props }) => {
   const scale = props.scale || 1;
-
-  useEffect(() => {
-    const audio = document.getElementById("audio");
-    try {
-      audio.play()
-    } catch (error) {
-      console.log("Error playing audio", error);
-    }
-  }, [])
-
   return (
     <div className="container">
       <div className="label">

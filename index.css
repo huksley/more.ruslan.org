@@ -29,7 +29,6 @@ div.container:hover audio {
 }
 
 audio {
-  border: 1px solid #fff;
   opacity: 0;
   margin-bottom: 1em;
 }
