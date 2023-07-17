@@ -1,3 +1,7 @@
+:root {
+  --app-height: 100%;
+}
+
 html,
 body {
   background-color: #092340;
@@ -8,7 +12,7 @@ body {
   -ms-text-size-adjust: none;
   -moz-text-size-adjust: none;
   text-size-adjust: none;
-  overflow-x: hidden;
+  overflow: hidden;
   overscroll-behavior-y: none;
 }
 
@@ -18,15 +22,21 @@ a:visited {
   text-decoration: none;
 }
 
-div.container:hover .label {
+div.container.hover .label {
   opacity: 1;
 }
 
-div.container:hover audio {
+div.container.hover audio {
   opacity: 1;
 }
 
 .container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,14 +44,15 @@ div.container:hover audio {
   width: 100vw;
   height: calc(100vh - 1px);
   box-sizing: border-box;
-  height: -webkit-fill-available;
+  height: 100vh;
+  height: var(--app-height);
 }
-
 
 audio {
   opacity: 0;
   margin-bottom: 1em;
   z-index: 2;
+  border-radius: 1em;
 }
 
 .label {

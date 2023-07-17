@@ -27,10 +27,33 @@ const TimeDisplay = () => {
   return <div className="time">{time.toLocaleString()}</div>;
 };
 
+const showControls = (el) => {
+  el.className = "container hover";
+  setTimeout(() => {
+    el.className = "container";
+  }, 5000);
+};
+
 export const Widget = ({ ...props }) => {
   const scale = props.scale || 1;
+  const ref = React.useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    showControls(el);
+  }, [scale]);
+
   return (
-    <div className="container">
+    <div
+      className="container"
+      ref={ref}
+      onClick={(e) => {
+        console.info("Click", e.target, ref.current);
+        // check is hover
+        const el = ref.current;
+        showControls(el);
+      }}
+    >
       <div className="label">
         <a href="https://www.surfline.com/surf-report/playa-hermosa-north/5842041f4e65fad6a7708b50?camId=60a3c7df4f2979815d160ac1">
           Camera from SurfLine
