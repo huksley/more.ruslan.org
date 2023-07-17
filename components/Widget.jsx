@@ -43,6 +43,7 @@ export const Widget = ({ ...props }) => {
         playing
         loop
         muted
+        playsinline
         url={videoUrl + "?t=" + new Date().getTime()}
         onReady={(player) => {
           const e = player.getInternalPlayer();
@@ -60,6 +61,7 @@ export const Widget = ({ ...props }) => {
               },
             },
             attributes: {
+              playsinline: true,
               crossOrigin: "anonymous",
               muted: true,
             },
