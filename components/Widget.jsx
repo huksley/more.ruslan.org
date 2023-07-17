@@ -18,7 +18,6 @@ const TimeDisplay = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const time = getTime();
-      console.log("time", time);
       setTime(time);
     }, 1000);
 
@@ -30,6 +29,15 @@ const TimeDisplay = () => {
 
 export const Widget = ({ ...props }) => {
   const scale = props.scale || 1;
+
+  useEffect(() => {
+    const audio = document.getElementById("audio");
+    try {
+      audio.play()
+    } catch (error) {
+      console.log("Error playing audio", error);
+    }
+  }, [])
 
   return (
     <div className="container">
@@ -69,9 +77,8 @@ export const Widget = ({ ...props }) => {
         }}
       />
 
-      <audio controls loop autoPlay hidden>
-        <source src={audioUrl} type="audio/mpeg" />
-        Your browser does not support the audio element.
+      <audio controls loop autoPlay id="audio">
+        <source src={audioUrl + "?t=" + new Date().getTime()} type="audio/mpeg" />
       </audio>
     </div>
   );
