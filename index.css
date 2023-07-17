@@ -3,6 +3,13 @@ body {
   background-color: #092340;
   margin: 0px;
   padding: 0px;
+  background-color: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 a,
@@ -25,8 +32,11 @@ div.container:hover audio {
   align-items: center;
   justify-content: flex-end;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 1px);
+  box-sizing: border-box;
+  height: -webkit-fill-available;
 }
+
 
 audio {
   opacity: 0;
@@ -57,20 +67,4 @@ video {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-@supports (-webkit-touch-callout: none) {
-  html {
-    overscroll-behavior-y: none;
-  }
-
-  html body {
-    overflow: hidden;
-  }
-}
-
-@media only screen and (min-width: 375px) and (max-height: 926px) and (-webkit-device-pixel-ratio: 3) {
-  body {
-    height: calc(100vh - 1px);
-  }
 }
